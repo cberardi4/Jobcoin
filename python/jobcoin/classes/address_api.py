@@ -46,9 +46,6 @@ class Address_API:
         '''
         Uses Address_API to check the balance of a given address (address).
         Return value (float):
-        - value of given address (address)
+        - balance of given address (address)
         '''
         return float(self.get_address_info(address).json()['balance'])
-
-    def sanitize_input(self):
-        print("sanitize_input - address")

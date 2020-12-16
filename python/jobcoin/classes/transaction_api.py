@@ -19,11 +19,6 @@ class Transaction_API:
             print("Invalid Transaction. {} doesn't have enough balance for that transaction.".format(from_address))
             return 'Invalid'
 
-        # invalid transaction - to_address does not exist in Jobcoin
-        #if self.address_api.check_activated_address(to_address) == 'unactivated':
-        #    print("Invalid Transaction. {} does not exist in Jobcoin.".format(to_address))
-        #    return 'Invalid'
-
         # valid transaction
         else:
             values = self.set_transaction_values(from_address, to_address, amount)
@@ -51,7 +46,3 @@ class Transaction_API:
         # SANITIZE INPUT
         # self.sanitize_input
         return {'fromAddress': from_address, 'toAddress': to_address, 'amount': amount}
-
-    def sanitize_input(self):
-        # sanitize input values for value dict to make sure no one is trying to do a sql injection
-        print('sanitize_input - transaction')

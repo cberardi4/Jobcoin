@@ -12,7 +12,6 @@ def main(args=None):
     print('Welcome to the Jobcoin mixer!\n')
 
     # what holds each transaction from src --> deposit. For the Mixer to watch if a transaction has occured
-    #transaction_queue = Queue()
 
     while True:
         new_addresses = click.prompt(
@@ -29,7 +28,7 @@ def main(args=None):
             'will be mixed and sent to your destination addresses.\n'
               .format(deposit_address=deposit_address))
 
-        jobcoin_client.run_mixer(deposit_address, new_addresses)
+        jobcoin_client.run('TestTest', new_addresses)
 
 
 
