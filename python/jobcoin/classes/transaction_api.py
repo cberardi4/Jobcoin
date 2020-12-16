@@ -4,15 +4,30 @@ from jobcoin.classes.address_api import Address_API
 from jobcoin.classes.transaction import Transaction
 
 class Transaction_API:
+    '''
+    Class that handles all operations/calls from mixer to Jobcoin API regarding transactions.
+    All API information comes from config.py file.
+    '''
 
     def __init__(self):
+        '''
+        Instantiate Transaction_API object. Need address API for checking if transactions are valid.
+        '''
         self.address_api = Address_API()
 
     def create_transaction(self, transaction):
+        '''
+        Creates a new Jobcoin transaction.
+        Return value (string):
+            - "Invalid" for transactions that failed
+            - "Valid" if transaction was successful
+        '''
+        # Get transaction details from transaction object
         from_address = transaction.get_from_address()
         to_address = transaction.get_to_address()
         amount = transaction.get_amount()
 
+        # check source address balance: make sure it's not sending more than it has in the Jobcoin account
         from_address_balance = self.address_api.get_address_balance(from_address)
         # invalid transaction - not enough funds in account
         if amount > from_address_balance:
@@ -23,7 +38,7 @@ class Transaction_API:
         else:
             values = self.set_transaction_values(from_address, to_address, amount)
             response = requests.post(config.API_TRANSACTIONS_URL, values)
-            return response
+            return 'Valid'
 
     def get_all_transactions(self):
         '''

@@ -11,6 +11,12 @@ transaction_queue_deposit = queue.Queue()
 transaction_queue_house = queue.Queue()
 HOUSE_ADDRESS = 'House_Address'
 
+'''
+Mixer file contains all functions within the Mixing algorithm. The file is called from the cli.py file calls the run() function.
+It retrieves transaction details, sanitizes input, and watches for new transactions at the depost address and house address.
+When mixer does notice a transaction, it proceeds to the next step in the process.
+'''
+
 def initialize_threads(transaction_src_deposit, transaction_api, address_api):
 
     # first thread is just watching to see if any Jobcoins have been dropped at deposit address
@@ -61,7 +67,8 @@ def ask_from_address(address_api):
         except:
             print("Not a valid input value. Please enter an address (alphanumeric).")
 
-
+def check_sql_injection():
+    print("implement me")
 
 # Write your Jobcoin API client here.
 def run(deposit_address, dst_addresses):
@@ -81,11 +88,8 @@ def run(deposit_address, dst_addresses):
     # initial transfer: Source Address --> Mixer's Deposit Address
     response = transaction_api.create_transaction(transaction_src_deposit)
     if response != "Invalid":
-        print(response.json())
         # add transaction to queue for monitoring Mixer
         transaction_queue_deposit.put(transaction_src_deposit)
-
-    # transfer of Deposit Address --> House Account happens in thread_polling_jobcoin_ntwk (mixer) thread
 
 
 def watch_network_deposit_addr(transaction_src_deposit, transaction_api, address_api):
@@ -141,8 +145,8 @@ def watch_network_house_addr(transaction_src_deposit, transaction_api, address_a
            # addr = final destination address
            for addr in final_dst_addresses:
                # come up with arbitratrary time to wait before sending from house to next final destination address
-               # only doing seconds (between 0 and 5) for the sake of testing. In real world mixer, I might wait longer
-               time_wait = random.randint(0, 5.0)
+               # only doing seconds (between 0 and 20) for the sake of testing. In real world mixer, I would wait longer
+               time_wait = random.randint(0, 20.0)
                time.sleep(time_wait)
                # create the new transaction object
                # dst = addr, source = HOUSE_ADDRESS

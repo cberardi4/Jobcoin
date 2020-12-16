@@ -4,7 +4,7 @@ import sys
 import threading
 import click
 
-from jobcoin import jobcoin_client
+from jobcoin import mixer
 
 
 @click.command()
@@ -22,14 +22,13 @@ def main(args=None):
             show_default=False)
         if new_addresses.strip() == '':
             sys.exit(0)
+        new_addresses = new_addresses.split(',')
         deposit_address = uuid.uuid4().hex
         click.echo(
             '\nYou may now send Jobcoins to address {deposit_address}. They '
             'will be mixed and sent to your destination addresses.\n'
               .format(deposit_address=deposit_address))
-
-        jobcoin_client.run('TestTest', new_addresses)
-
+        mixer.run(deposit_address, new_addresses)
 
 
 if __name__ == '__main__':

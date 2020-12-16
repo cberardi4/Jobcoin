@@ -2,23 +2,24 @@ import requests
 from . import config
 
 class Address_API:
-
-    def __init__(self):
-      self.address = ''
-
+    '''
+    Class that handles all operations/calls from mixer to Jobcoin API regarding addresses.
+    All API information comes from config.py file.
+    '''
 
     def check_activated_address(self, address):
         '''
         Checks if address has been activated yet (meaning it has an account with a balance).
-        The Jobcoin API defines an "Unused" address as one with an empty list for the transaction
-        variable and a balance of zero.
+        The Jobcoin API states "for an unused address, it will return a balance of 0 and an empty list of transactions."
+        Check for this condition.
         Return value (string):
         - 'unactivated' for unactivated accounts
         - 'activated' for already activated accounts
         '''
         transaction_list = self.get_address_transactions(address)
         balance = self.get_address_balance(address)
-        #print(address_to_check.json())
+        # Jobcoin API documentation states "for an unused address, it will return a balance of 0 and an empty list of transactions."
+        # check if this condition is true
         if len(transaction_list) == 0 and balance == 0:
             return 'unactivated'
         else:
