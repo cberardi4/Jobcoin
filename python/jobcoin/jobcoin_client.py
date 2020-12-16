@@ -4,41 +4,72 @@ import time
 import queue
 from jobcoin.classes.mixer import Mixer
 from jobcoin.classes.transaction import Transaction
-from jobcoin.apis.address_api import Address_API
-from jobcoin.apis.transaction_api import Transaction_API
+from jobcoin.classes.address_api import Address_API
+from jobcoin.classes.transaction_api import Transaction_API
 
+transaction_queue = queue.Queue()
 
-
-def initialize_polling_threads(mixer, transaction_src_deposit, transaction_queue):
-    thread_polling_jobcoin_ntwk = threading.Thread(target=mixer.watch_network, args=[transaction_src_deposit, transaction_queue])
+def initialize_polling_threads():
+    thread_polling_jobcoin_ntwk = threading.Thread(target=watch_network, args=[])
     # do not want the thread living after the main thread dies
     thread_polling_jobcoin_ntwk.setDaemon(True)
     thread_polling_jobcoin_ntwk.start()
 
+
+def ask_amount():
+    # Get necessary transaction details
+    # Sanitize inputs
+    while True:
+        try:
+            amount = float(input("How many Jobcoins would you like to transfer? "))
+            # make sure the user is entering a positive number
+            if amount <= 0:
+                print("Not a valid transfer amount. Value must be greater than zero.")
+                # try again
+                continue
+            # if value is a numeric value over zero, exit While loop ==> valid amount
+            else:
+                return amount
+        # user entered a value that was not a number
+        except:
+            print("Not a valid input value. Please enter a number.")
+
+def ask_from_address(address_api):
+    # Addresses have no real limitations on what characters/length they can be
+    # if there was a database connected to users, would check for SQL injection attack substrings (ex: '1=1)
+    while True:
+        try:
+            from_address = input("What address will the transaction come from? ")
+
+            # make sure the from_address exists --> otherwise, the Jobcoin wouldn't have anywhere to come from
+            status = address_api.check_activated_address(from_address)
+            if status == 'activated':
+                return from_address
+            else:
+                print("Source address does not exist. Please enter a valid source address.")
+        except:
+            print("Not a valid input value. Please enter an address (alphanumeric).")
+
+
+
 # Write your Jobcoin API client here.
 def run_mixer(deposit_address, new_addresses):
-
-    transaction_queue = Queue()
-
     address_api = Address_API()
     transaction_api = Transaction_API()
     mixer = Mixer()
 
-    # Get necessary transaction details
-    amount = float(input("How many Jobcoins would you like to transfer? "))
-    from_address = input("What address will the transaction come from? ")
-
-    # sanitize amount
-    # sanitize address
+    # Get necessary transaction details and sanitize input
+    amount = ask_amount()
+    from_address = ask_from_address(address_api)
 
     # create Transaction object to store all of transaction information
     transaction_src_deposit = Transaction(deposit_address, from_address, amount)
-
+    print(transaction_src_deposit.get_from_address())
     # have Mixer listening for transactions on separate thread immediately
-    initialize_polling_threads(mixer, transaction_src_deposit, transaction_queue)
+    #initialize_polling_threads(transaction_queue)
 
     # initial transfer: Source Address --> Mixer's Deposit Address
-    response = transaction_api.create_transaction(from_address, deposit_address, amount)
+    response = transaction_api.create_transaction(transaction_src_deposit)
     if response != "Invalid":
         print(response.json())
 

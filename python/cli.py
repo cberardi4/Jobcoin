@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import uuid
 import sys
-
+import threading
 import click
 
 from jobcoin import jobcoin_client
@@ -10,6 +10,10 @@ from jobcoin import jobcoin_client
 @click.command()
 def main(args=None):
     print('Welcome to the Jobcoin mixer!\n')
+
+    # what holds each transaction from src --> deposit. For the Mixer to watch if a transaction has occured
+    #transaction_queue = Queue()
+
     while True:
         new_addresses = click.prompt(
             'Please enter a comma-separated list of new, unused Jobcoin '

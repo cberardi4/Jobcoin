@@ -1,13 +1,18 @@
 import requests
 from . import config
-from jobcoin.apis.address_api import Address_API
+from jobcoin.classes.address_api import Address_API
+from jobcoin.classes.transaction import Transaction
 
 class Transaction_API:
 
     def __init__(self):
         self.address_api = Address_API()
 
-    def create_transaction(self, from_address, to_address, amount):
+    def create_transaction(self, transaction):
+        from_address = transaction.get_from_address()
+        to_address = transaction.get_to_address()
+        amount = transaction.get_amount()
+
         from_address_balance = self.address_api.get_address_balance(from_address)
         # invalid transaction - not enough funds in account
         if amount > from_address_balance:
