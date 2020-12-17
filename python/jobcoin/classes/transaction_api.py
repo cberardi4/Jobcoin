@@ -1,7 +1,10 @@
 import requests
+import logging
 from . import config
 from jobcoin.classes.address_api import Address_API
 from jobcoin.classes.transaction import Transaction
+
+logger = logging.getLogger(__name__)
 
 class Transaction_API:
     '''
@@ -30,7 +33,7 @@ class Transaction_API:
         # check source address balance: make sure it's not sending more than it has in the Jobcoin account
         from_address_balance = self.address_api.get_address_balance(from_address)
         # invalid transaction - not enough funds in account
-        if amount > from_address_balance:
+        if amount > float(from_address_balance):
             print("Invalid Transaction. {} doesn't have enough balance for that transaction.".format(from_address))
             return 'Invalid'
 
@@ -58,6 +61,4 @@ class Transaction_API:
         - to_address (string)
         - amount (sting)
         '''
-        # SANITIZE INPUT
-        # self.sanitize_input
         return {'fromAddress': from_address, 'toAddress': to_address, 'amount': amount}

@@ -3,16 +3,38 @@ import uuid
 import sys
 import threading
 import click
-
+import logging
 from jobcoin import mixer
 
+logger = logging.getLogger(__name__)
+
+def setup_logging():
+    levels = ['DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL', 'FATAL']
+
+    logger.setLevel(logging.DEBUG)
+    # set format of logging
+    log_formatter = logging.Formatter('%(asctime)s [%(name)s] %(levelname)s - %(message)s')
+
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(log_formatter)
+
+    root_logger = logging.getLogger('')
+    root_logger.setLevel(logging.DEBUG)
+    root_logger.addHandler(console_handler)
+
+    # create FileHandler - sends logging output to a file
+    file_handler = logging.FileHandler('/Users/cberardi/Desktop/Jobcoin/python/jobcoin.log')
+    file_handler.setFormatter(log_formatter)
+
+    # add the file handler to the logger
+    logging.getLogger('').addHandler(file_handler)
 
 @click.command()
 def main(args=None):
     print('Welcome to the Jobcoin mixer!\n')
 
-    # what holds each transaction from src --> deposit. For the Mixer to watch if a transaction has occured
-
+    setup_logging()
     while True:
         new_addresses = click.prompt(
             'Please enter a comma-separated list of new, unused Jobcoin '
@@ -28,8 +50,19 @@ def main(args=None):
             '\nYou may now send Jobcoins to address {deposit_address}. They '
             'will be mixed and sent to your destination addresses.\n'
               .format(deposit_address=deposit_address))
-        mixer.run(deposit_address, new_addresses)
+        # if still true by the end of for loop, then addresses are safe to send to Mixer
+        # checking for possible sql attempts before sending address to mixer
+        is_alphanumeric = True
+        for addr in new_addresses:
+            is_alphanumeric = addr.isalnum()
+            # someone trying to perform sql injection
+            if is_alphanumeric == False:
+                print("Not a valid address. Please enter an alphanumeric value.")
+                break
 
+        if is_alphanumeric == True:
+            logger.info("Final destination addresses given by user: {}".format(new_addresses))
+            mixer.run(deposit_address, new_addresses)
 
 if __name__ == '__main__':
     sys.exit(main())

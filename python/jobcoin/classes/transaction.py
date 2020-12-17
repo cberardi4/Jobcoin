@@ -1,3 +1,7 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
 class Transaction:
     '''
     Object that carries all information need from initial transaction (from Source address) through Mixer's algorithm,
