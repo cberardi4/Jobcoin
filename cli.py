@@ -5,6 +5,7 @@ import threading
 import click
 import logging
 import time
+import os
 from jobcoin import mixer
 
 logger = logging.getLogger(__name__)
@@ -24,8 +25,10 @@ def setup_logging():
     root_logger.setLevel(logging.INFO)
     root_logger.addHandler(console_handler)
 
+    # get path of current directory for log file
+    path = os.path.dirname(os.path.abspath(__file__))
     # create FileHandler - sends logging output to a file
-    file_handler = logging.FileHandler('/Users/cberardi/Desktop/Jobcoin/python/jobcoin.log')
+    file_handler = logging.FileHandler(path + '/jobcoin.log')
     file_handler.setFormatter(log_formatter)
 
     # add the file handler to the logger
