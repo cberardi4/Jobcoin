@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 import pytest
-import re
-from click.testing import CliRunner
-
-from ..jobcoin.classes import config
 from ..jobcoin.classes.transaction_api import Transaction_API
 from ..jobcoin.classes.address_api import Address_API
 from ..jobcoin.classes.transaction import Transaction
 
+@pytest.fixture
 def set_up(to_address, from_address, amount):
     '''
     Create all objects and variables necessary to use the APIs
