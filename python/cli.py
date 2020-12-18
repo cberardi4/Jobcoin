@@ -4,23 +4,23 @@ import sys
 import threading
 import click
 import logging
-from jobcoin import mixer
+from .jobcoin import mixer
 
 logger = logging.getLogger(__name__)
 
 def setup_logging():
     levels = ['DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL', 'FATAL']
 
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
     # set format of logging
     log_formatter = logging.Formatter('%(asctime)s [%(name)s] %(levelname)s - %(message)s')
 
     console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
+    console_handler.setLevel(logging.ERROR)
     console_handler.setFormatter(log_formatter)
 
     root_logger = logging.getLogger('')
-    root_logger.setLevel(logging.DEBUG)
+    root_logger.setLevel(logging.INFO)
     root_logger.addHandler(console_handler)
 
     # create FileHandler - sends logging output to a file

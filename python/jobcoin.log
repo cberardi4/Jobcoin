@@ -1,0 +1,84 @@
+2020-12-17 01:06:54,774 [__main__] INFO - Final destination addresses given by user: ['33', '55', '3afsdfa']
+2020-12-17 01:07:32,100 [__main__] INFO - Final destination addresses given by user: ['33', '111', '66fasdf']
+2020-12-17 01:09:05,118 [__main__] INFO - Final destination addresses given by user: ['33']
+2020-12-17 01:09:51,730 [__main__] INFO - Final destination addresses given by user: ['22', '551', 'asdf']
+2020-12-17 01:10:46,895 [__main__] INFO - Final destination addresses given by user: ['33', '666qwer', '1322354']
+2020-12-17 01:12:04,431 [__main__] INFO - Final destination addresses given by user: ['1234', '145qer', '234asdf']
+2020-12-17 09:25:30,582 [__main__] INFO - Final destination addresses given by user: ['223']
+2020-12-17 09:39:04,244 [__main__] INFO - Final destination addresses given by user: ['22']
+2020-12-17 09:39:31,168 [__main__] INFO - Final destination addresses given by user: ['22']
+2020-12-17 09:40:03,657 [__main__] INFO - Final destination addresses given by user: ['66666']
+2020-12-17 09:48:44,519 [__main__] INFO - Final destination addresses given by user: ['22']
+2020-12-17 09:51:12,789 [__main__] INFO - Final destination addresses given by user: ['22']
+2020-12-17 09:52:25,516 [__main__] INFO - Final destination addresses given by user: ['33', '56', '234234']
+2020-12-17 09:53:20,502 [__main__] INFO - Final destination addresses given by user: ['223234']
+2020-12-17 09:53:44,990 [__main__] INFO - Final destination addresses given by user: ['22']
+2020-12-17 10:01:20,061 [__main__] INFO - Final destination addresses given by user: ['22']
+2020-12-17 10:05:15,040 [__main__] INFO - Final destination addresses given by user: ['22']
+2020-12-17 10:06:19,185 [__main__] INFO - Final destination addresses given by user: ['113']
+2020-12-17 10:11:18,658 [__main__] INFO - Final destination addresses given by user: ['34234']
+2020-12-17 10:12:40,626 [__main__] INFO - Final destination addresses given by user: ['1231']
+2020-12-17 10:14:51,193 [__main__] INFO - Final destination addresses given by user: ['224']
+2020-12-17 10:18:07,490 [__main__] INFO - Final destination addresses given by user: ['3243']
+2020-12-17 10:22:07,293 [__main__] INFO - Final destination addresses given by user: ['2341234']
+2020-12-17 10:22:07,293 [jobcoin.mixer] INFO - IN RUN
+2020-12-17 10:22:07,294 [jobcoin.mixer] INFO - <Logger jobcoin.mixer (DEBUG)>
+2020-12-17 10:22:10,791 [jobcoin.mixer] INFO - Total transaction amount: 2.0
+2020-12-17 10:22:11,674 [urllib3.connectionpool] DEBUG - Starting new HTTP connection (1): jobcoin.gemini.com:80
+2020-12-17 10:22:11,882 [urllib3.connectionpool] DEBUG - http://jobcoin.gemini.com:80 "GET /reappoint-pampered/api/addresses/Tina HTTP/1.1" 200 6092
+2020-12-17 10:22:11,886 [urllib3.connectionpool] DEBUG - Starting new HTTP connection (1): jobcoin.gemini.com:80
+2020-12-17 10:22:12,098 [urllib3.connectionpool] DEBUG - http://jobcoin.gemini.com:80 "GET /reappoint-pampered/api/addresses/Tina HTTP/1.1" 200 6092
+2020-12-17 10:22:12,106 [jobcoin.mixer] INFO - Source address given: Tina
+2020-12-17 10:22:12,170 [urllib3.connectionpool] DEBUG - Starting new HTTP connection (1): jobcoin.gemini.com:80
+2020-12-17 10:22:12,464 [urllib3.connectionpool] DEBUG - http://jobcoin.gemini.com:80 "GET /reappoint-pampered/api/addresses/Tina HTTP/1.1" 200 6092
+2020-12-17 10:22:12,498 [urllib3.connectionpool] DEBUG - Starting new HTTP connection (1): jobcoin.gemini.com:80
+2020-12-17 10:22:12,822 [urllib3.connectionpool] DEBUG - http://jobcoin.gemini.com:80 "POST /reappoint-pampered/api/transactions HTTP/1.1" 200 15
+2020-12-17 10:22:12,840 [jobcoin.mixer] INFO - Transaction between Tina and 525332467cdb4b9fa74fe8b92ac3794c successful! 
+2020-12-17 10:22:12,861 [urllib3.connectionpool] DEBUG - Starting new HTTP connection (1): jobcoin.gemini.com:80
+2020-12-17 10:22:13,105 [urllib3.connectionpool] DEBUG - http://jobcoin.gemini.com:80 "GET /reappoint-pampered/api/addresses/525332467cdb4b9fa74fe8b92ac3794c HTTP/1.1" 200 158
+2020-12-17 10:22:13,126 [urllib3.connectionpool] DEBUG - Starting new HTTP connection (1): jobcoin.gemini.com:80
+2020-12-17 10:22:13,356 [urllib3.connectionpool] DEBUG - http://jobcoin.gemini.com:80 "POST /reappoint-pampered/api/transactions HTTP/1.1" 200 15
+2020-12-17 10:22:13,370 [jobcoin.mixer] INFO - Transaction between 525332467cdb4b9fa74fe8b92ac3794c and House_Address successful! 
+2020-12-17 10:22:13,370 [jobcoin.mixer] INFO - Transaction dictionary: {'2341234': 2.0}
+2020-12-17 10:22:15,405 [urllib3.connectionpool] DEBUG - Starting new HTTP connection (1): jobcoin.gemini.com:80
+2020-12-17 10:22:15,646 [urllib3.connectionpool] DEBUG - http://jobcoin.gemini.com:80 "GET /reappoint-pampered/api/addresses/House_Address HTTP/1.1" 200 8495
+2020-12-17 10:22:15,679 [urllib3.connectionpool] DEBUG - Starting new HTTP connection (1): jobcoin.gemini.com:80
+2020-12-17 10:22:15,915 [urllib3.connectionpool] DEBUG - http://jobcoin.gemini.com:80 "POST /reappoint-pampered/api/transactions HTTP/1.1" 200 15
+2020-12-17 10:22:15,928 [jobcoin.mixer] INFO - Transaction between House_Address and 2341234 successful! 
+2020-12-17 18:36:09,329 [__main__] INFO - Final destination addresses given by user: ['21234', '543', '12asdfasfd']
+2020-12-17 18:36:09,331 [jobcoin.mixer] INFO - IN RUN
+2020-12-17 18:36:09,331 [jobcoin.mixer] INFO - <Logger jobcoin.mixer (INFO)>
+2020-12-17 18:36:11,127 [jobcoin.mixer] INFO - Total transaction amount: 3.0
+2020-12-17 18:36:18,124 [jobcoin.mixer] INFO - Source address given: Tina
+2020-12-17 18:36:18,969 [jobcoin.mixer] INFO - Transaction between Tina and 3f65f7ae8560446e9b3ee3c01280212a successful! 
+2020-12-17 18:36:19,658 [jobcoin.mixer] INFO - Transaction between 3f65f7ae8560446e9b3ee3c01280212a and House_Address successful! 
+2020-12-17 18:36:19,658 [jobcoin.mixer] INFO - Transaction dictionary: {'21234': 0.40309273233720366, '543': 0.3489314820495128, '12asdfasfd': 2.2479757856132836}
+2020-12-17 18:36:22,177 [jobcoin.mixer] INFO - Transaction between House_Address and 21234 successful! 
+2020-12-17 18:39:12,017 [__main__] INFO - Final destination addresses given by user: ['2234', '345234', 'asdf']
+2020-12-17 18:39:13,926 [jobcoin.mixer] INFO - Total transaction amount: 2.0
+2020-12-17 18:39:16,570 [jobcoin.mixer] INFO - Source address given: Tina
+2020-12-17 18:39:17,175 [jobcoin.mixer] INFO - Transaction between Tina and 91b205515e0645beb99fc14bf65d22ec successful! 
+2020-12-17 18:39:17,652 [jobcoin.mixer] INFO - Transaction between 91b205515e0645beb99fc14bf65d22ec and House_Address successful! 
+2020-12-17 18:39:17,653 [jobcoin.mixer] INFO - Transaction dictionary: {'2234': 0.26872848822480244, '345234': 0.23262098803300854, 'asdf': 1.498650523742189}
+2020-12-17 18:49:04,026 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:49:04,026 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:51:48,480 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:51:48,480 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:52:41,593 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:52:41,593 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:52:59,302 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:52:59,302 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:53:15,235 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 18:53:15,235 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:00:34,227 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:00:34,227 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:01:30,292 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:01:30,292 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:01:35,430 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:01:35,430 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:02:18,017 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:02:18,017 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:02:35,142 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:02:35,142 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:02:58,598 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']
+2020-12-17 19:02:58,598 [python.cli] INFO - Final destination addresses given by user: ['1234', '4321']

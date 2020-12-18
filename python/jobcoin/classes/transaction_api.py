@@ -1,8 +1,8 @@
 import requests
 import logging
 from . import config
-from jobcoin.classes.address_api import Address_API
-from jobcoin.classes.transaction import Transaction
+from .address_api import Address_API
+from .transaction import Transaction
 
 logger = logging.getLogger(__name__)
 

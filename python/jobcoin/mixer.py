@@ -6,17 +6,11 @@ import logging
 from random import random
 from random import seed
 from random import randint
-from jobcoin.classes.transaction import Transaction
-from jobcoin.classes.address_api import Address_API
-from jobcoin.classes.transaction_api import Transaction_API
+from .classes.transaction import Transaction
+from .classes.address_api import Address_API
+from .classes.transaction_api import Transaction_API
 
 logger = logging.getLogger(__name__)
-#logger.setLevel(logging.INFO)
-#logging.basicConfig(level=logging.WARN)
-logger.critical("SETUP")
-
-
-
 
 # new transactions from Source Address --> Deposit Address get placed in here
 transaction_queue_deposit = queue.Queue()
@@ -111,8 +105,6 @@ def run(deposit_address, dst_addresses):
     This function starts off the entire mixing process. It creates API and Transaction objects for the original transaction from Source --> Deposit.
     It sets off the other threads polling the Jobcoin network, and validates the original transaction was successful.
     '''
-    logger.info("IN RUN")
-    logger.info(logger)
     address_api = Address_API()
     transaction_api = Transaction_API()
 
