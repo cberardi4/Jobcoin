@@ -164,46 +164,23 @@ def scramble_transaction_money(address_list, total_amount):
     for each address (transactions_dict). After, it (transaction_n) is subtracted from the (total_amount). The for loop continues to multiply the factor
     (factor) by the diminishing (total_amount) n-1 times. We want the last transaction amount to just be the remainder from the previous factor multiplication.
 
-    The function also checks to make sure that all of the transaction amounts add up completely to the original total transaction amount (total_amount_original)
-    If for some reason it does not, it finds the difference in the sum of the transaction amounts (missing_amount), and adds it to the very first
-    item in the list.
-
     Return value (list):
         - amount for individual transaction (float)
     '''
     # dictionary that assigns a transaction amount to each address
     transactions_dict = {}
-    # save total amount at beginning, because the value will be manipulated in for loop
-    # check at the very end that the final transaction amounts all add up to the original amount
-    total_amount_original = total_amount
     # want fraction to be below 1, but don't want the factor to be so insignificant that it's almost the same
     # as the entire amount, so limiting it to fractions closer to 0.5
     seed(1)
     factor = random()
     num_addrs = len(address_list)
-    # using this variable to make sure there is no loss in the total amount due to decimal multiplication
-    checking_total_at_end = 0
     for n in range(0,num_addrs-1):
         transaction_n = factor * total_amount
         # assign transaction amount to address at index n
         transactions_dict[address_list[n]]=transaction_n
-        checking_total_at_end += transaction_n
         total_amount = total_amount - transaction_n
 
-    # for the last transaction amount, we just want to do whatever is leftover from the last iterations
-    # of the factor multiplying
     transactions_dict[address_list[num_addrs-1]]=total_amount
-    checking_total_at_end += total_amount
-
-    if checking_total_at_end != total_amount_original:
-        missing_amount = total_amount_original - checking_total_at_end
-        # avoid an index out of bounds error
-        # should always be first item in list
-        index_of_transaction_to_add_to = len(num_addrs) - (len(num_addrs)-1)
-        # add missing amount to the transaction amount for transaction at index index_of_transaction_to_add_to so that
-        # every single fraction of a Jobcoin is accounted for
-        transactions_dict[index_of_transaction_to_add_to] = transactions_dict[index_of_transaction_to_add_to] + missing_amount
-
     return transactions_dict
 
 

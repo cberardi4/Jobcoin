@@ -1,7 +1,7 @@
 import pytest
-from ..jobcoin.classes.transaction_api import Transaction_API
-from ..jobcoin.classes.address_api import Address_API
-from ..jobcoin.classes.transaction import Transaction
+from jobcoin.classes.transaction_api import Transaction_API
+from jobcoin.classes.address_api import Address_API
+from jobcoin.classes.transaction import Transaction
 
 def test_check_activated_address_invalid():
     '''

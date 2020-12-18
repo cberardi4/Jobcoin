@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import pytest
-from ..jobcoin.classes.transaction_api import Transaction_API
-from ..jobcoin.classes.address_api import Address_API
-from ..jobcoin.classes.transaction import Transaction
+from jobcoin.classes.transaction_api import Transaction_API
+from jobcoin.classes.address_api import Address_API
+from jobcoin.classes.transaction import Transaction
 
 @pytest.fixture
 def set_up(to_address, from_address, amount):

@@ -1,5 +1,5 @@
 import pytest
-from ..jobcoin.classes.transaction import Transaction
+from jobcoin.classes.transaction import Transaction
 
 
 def test_get_to_address():

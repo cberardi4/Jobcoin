@@ -1,10 +1,10 @@
 # !/usr/bin/env python
 import pytest
 import queue
-from ..jobcoin.classes.transaction_api import Transaction_API
-from ..jobcoin.classes.address_api import Address_API
-from ..jobcoin.classes.transaction import Transaction
-from ..jobcoin import mixer
+from jobcoin.classes.transaction_api import Transaction_API
+from jobcoin.classes.address_api import Address_API
+from jobcoin.classes.transaction import Transaction
+from jobcoin import mixer
 
 def test_scramble_transaction_money():
     '''
