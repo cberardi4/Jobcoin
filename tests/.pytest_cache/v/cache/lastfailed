@@ -1,0 +1,4 @@
+{
+  "test_jobcoin.py::test_cli_basic": true,
+  "test_mixer.py::test_ask_from_address": true
+}

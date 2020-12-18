@@ -1,0 +1,15 @@
+[
+  "test_address_api.py::test_check_activated_address_invalid",
+  "test_address_api.py::test_check_activated_address_valid",
+  "test_address_api.py::test_address_info",
+  "test_jobcoin.py::test_content",
+  "test_mixer.py::test_scramble_transaction_money",
+  "test_transaction.py::test_get_to_address",
+  "test_transaction.py::test_get_from_address",
+  "test_transaction.py::test_get_amount",
+  "test_transaction.py::test_get_final_addresses",
+  "test_transaction_api.py::test_create_transaction_valid",
+  "test_transaction_api.py::test_create_transaction_invalid",
+  "test_transaction_api.py::test_get_all_transactions",
+  "test_transaction_api.py::test_set_transaction_values"
+]

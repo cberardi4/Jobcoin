@@ -4,7 +4,8 @@ import sys
 import threading
 import click
 import logging
-from .jobcoin import mixer
+import time
+from jobcoin import mixer
 
 logger = logging.getLogger(__name__)
 
@@ -63,6 +64,11 @@ def main(args=None):
         if is_alphanumeric == True:
             logger.info("Final destination addresses given by user: {}".format(new_addresses))
             mixer.run(deposit_address, new_addresses)
+            print("...Transactions in progress...")
+            if len(new_addresses) <= 3:
+                time.sleep(35)
+            else:
+                time.sleep(100)
 
 if __name__ == '__main__':
     sys.exit(main())

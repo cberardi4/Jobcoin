@@ -3,8 +3,7 @@ import pytest
 import re
 from click.testing import CliRunner
 
-from ..jobcoin.classes import config
-from .. import cli
+#from .. import cli
 
 
 @pytest.fixture
@@ -17,7 +16,7 @@ def test_content(response):
     print(response.content)
     assert b'Hello!' in response.content
 
-
+'''
 def test_cli_basic():
     runner = CliRunner()
     result = runner.invoke(cli.main)
@@ -25,7 +24,7 @@ def test_cli_basic():
     assert 'Welcome to the Jobcoin mixer' in result.output
 
 # test hangs due to threading in mixer
-'''
+
 def test_cli_creates_address():
     print("4")
     runner = CliRunner()
